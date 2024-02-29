@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Câu hỏi</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="container-2">
+    <div class="question-group">
+        <h2>Nhóm 1: Lựa chọn đúng/sai</h2>
+        <div class="group1">
+            <h3>Câu hỏi 1:</h3>
+            <input type="radio" name="group1-1" value="true"> Đúng <br>
+            <input type="radio" name="group1-1" value="false"> Sai
+            <!-- Thêm 9 câu hỏi khác -->
+        </div>
+    </div>
+
+    <div class="question-group">
+        <h2>Nhóm 2: Chọn 1 trong 4 đáp án</h2>
+        <div class="group2"><h3>Câu hỏi 11:</h3>
+            <input type="radio" name="group2" value="a"> Lựa chọn A<br>
+            <input type="radio" name="group2" value="b"> Lựa chọn B<br>
+            <input type="radio" name="group2" value="c"> Lựa chọn C<br>
+            <input type="radio" name="group2" value="d"> Lựa chọn D<br>
+        <!-- Thêm 9 câu hỏi khác -->
+    </div>
+            
+    </div>
+
+    <div class="question-group">
+        <h2>Nhóm 3: Chọn nhiều đáp án</h2>
+        <div id="group3">
+            <!-- Câu hỏi nhóm 3 -->
+            <h3>Câu hỏi 21: </h3>
+                <input type="checkbox" name="group3-21" value="a"> Đáp án A <br>
+                <input type="checkbox" name="group3-21" value="b"> Đáp án B <br>
+                <input type="checkbox" name="group3-21" value="c"> Đáp án C <br>
+                <input type="checkbox" name="group3-21" value="d"> Đáp án D <br>
+            <!-- Thêm 9 câu hỏi khác -->
+        </div>
+    </div>
+
+    <div class="question-group">
+        <h2>Nhóm 4: Trả lời tự luận</h2>
+        <div id="group4">
+            <!-- Câu hỏi nhóm 4 -->
+            <h3>Câu hỏi 31:</h3> 
+            <textarea name="group4-31" rows="4" cols="70"></textarea>
+            <!-- Thêm 9 câu hỏi khác -->
+        </div>
+    </div>
+
+    <button onclick="calculateScore()">Nộp bài</button>
+    <div id="result"></div>
+</div>
+
+<script>
+    function calculateScore() {
+        var group1Score = calculateGroupScore("group1");
+        var group2Score = calculateGroupScore("group2");
+        var group3Score = calculateGroupScore("group3");
+        var group4Score = calculateGroupScore("group4");
+
+        var totalScore = group1Score + group2Score + group3Score + group4Score;
+
+        document.getElementById("result").innerText = "Số đáp án đúng: " + totalScore;
+    }
+
+    function calculateGroupScore(groupName) {
+        var group = document.getElementById(groupName).getElementsByTagName("li");
+        var score = 0;
+
+        for (var i = 0; i < group.length; i++) {
+            var inputs = group[i].querySelectorAll("input[type='radio']:checked, input[type='checkbox']:checked, textarea");
+            if (inputs.length > 0) {
+                score++;
+            }
+        }
+
+        return score;
+    }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thông tin cá nhân</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+
+<div class="container">
+    <form id="personal-info-form">
+        <h1>Nhập thông tin cá nhân</h1>
+        <label for="fullname">Họ và tên:</label>
+        <input type="text" id="fullname" name="fullname" required><br><br>
+    
+        <label for="dob">Ngày tháng năm sinh:</label>
+        <input type="date" id="dob" name="dob" required><br><br>
+    
+        <label for="student-id">Mã sinh viên:</label>
+        <input type="text" id="student-id" name="student-id" required><br><br>
+    
+        <label for="class">Lớp:</label>
+        <input type="text" id="class" name="class" required><br><br>
+    
+        <input type="submit" value = "Bắt Đầu">
+    </form>
+</div>
+
+<script>
+    document.getElementById("personal-info-form").addEventListener("submit", function(event) {
+        event.preventDefault();
+
+        // Lấy thông tin từ form
+        var fullname = document.getElementById("fullname").value;
+        var dob = document.getElementById("dob").value;
+        var studentId = document.getElementById("student-id").value;
+        var classInfo = document.getElementById("class").value;
+        window.location.href = "test.html";
+    });
+</script>
+
+</body>
+</html>
